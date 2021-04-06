@@ -11,3 +11,5 @@ auto/scripts
 auto/results
 auto/tmp
 *.pyc
+preprocess/.tmp
+preprocess/smile.log
