@@ -88,6 +88,11 @@ class ResidualAE(nn.Module):
         self.dropout = dropout
         self.n_blocks = n_blocks
         self.input_dim = input_dim
+        self.transition = nn.Sequential(
+            nn.Linear(input_dim, input_dim),
+            nn.ReLU(),
+            nn.Linear(input_dim, input_dim)
+        )
         for i in range(n_blocks):
             setattr(self, 'encoder_' + str(i), self.get_encoder(layers))
             setattr(self, 'decoder_' + str(i), self.get_decoder(layers))
@@ -137,7 +142,7 @@ class ResidualAE(nn.Module):
             x_out = decoder(latent)
             latents.append(latent)
         latents = torch.cat(latents, dim=-1)
-        return x_in+x_out, latents
+        return self.transition(x_in+x_out), latents
 
 class ResidualUnetAE(nn.Module):
     ''' Residual autoencoder using fc layers
