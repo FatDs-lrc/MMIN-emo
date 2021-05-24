@@ -145,10 +145,11 @@ if __name__ == '__main__':
         logger.info('\n{}'.format(cm))
         
         # show test result for debugging
-        # _acc, _uar, _f1, cm = eval(model, tst_dataset)
-        # logger.info('Tst result of epoch %d acc %.4f uar %.4f f1 %.4f' % (epoch, _acc, _uar, _f1))
-        # logger.info('\n{}'.format(cm))
+        acc, uar, f1, cm = eval(model, tst_dataset)
+        logger.info('Tst result of epoch %d acc %.4f uar %.4f f1 %.4f' % (epoch, acc, uar, f1))
+        logger.info('\n{}'.format(cm))
 
+        # record epoch with best result
         if f1 > best_eval_f1:
             best_eval_epoch = epoch
             best_eval_uar = uar

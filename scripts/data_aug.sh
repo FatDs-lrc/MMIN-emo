@@ -13,8 +13,7 @@ cmd="python train_miss.py --dataset_mode=multimodal_miss --model=uttf_dataaug
 --L_type=bert_large --input_dim_l=1024 --embd_size_l=128
 --output_dim=4 --cls_layers=128,128 --dropout_rate=0.3
 --niter=20 --niter_decay=20 --verbose --beta1=0.9 --init_type kaiming
---batch_size=128 --lr=1e-4 --run_idx=$run_idx
---modality=AVL
+--batch_size=128 --lr=1e-4 --run_idx=$run_idx --modality=AVL
 --name=data_aug_add_AVL --suffix=run{run_idx} --has_test
 --cvNo=$i"
 
